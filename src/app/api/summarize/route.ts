@@ -15,7 +15,7 @@ export async function POST(req: Request) {
 
     const summary = await generateSummary({ transcript, instruction });
     return NextResponse.json({ summary });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error(err);
     return NextResponse.json(
       { error: err?.message || "Failed to generate summary" },
