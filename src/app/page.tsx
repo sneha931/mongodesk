@@ -34,7 +34,7 @@ export default function Home() {
       setSummary(data.summary || "");
     } catch (e: unknown) {
       const error = e as Error;
-  setError(error.message);
+      setError(error.message);
     } finally {
       setLoading(false);
     }
@@ -93,7 +93,7 @@ export default function Home() {
             value={instruction}
             onChange={(e) => setInstruction(e.target.value)}
             rows={4}
-            className="w-full p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 text-black"
           />
         </div>
 
@@ -117,7 +117,7 @@ export default function Home() {
             value={summary}
             onChange={(e) => setSummary(e.target.value)}
             rows={10}
-            className="w-full p-3 border rounded-lg shadow-sm font-mono focus:ring-2 focus:ring-green-500"
+            className="w-full p-3 border rounded-lg shadow-sm font-mono focus:ring-2 focus:ring-green-500 text-black"
             placeholder="Your summary will appear here…"
           />
         </div>
