@@ -15,11 +15,12 @@ export async function POST(req: Request) {
 
     const summary = await generateSummary({ transcript, instruction });
     return NextResponse.json({ summary });
-  } catch (err: any) {
-    console.error(err);
-    return NextResponse.json(
-      { error: err?.message || "Failed to generate summary" },
-      { status: 500 }
-    );
+  } catch (err: unknown) {
+   const error = err as Error;
+  console.error(error);
+   return NextResponse.json(
+    { error: error.message || "Failed to send email" },
+    { status: 500 }
+  );
   }
 }

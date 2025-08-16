@@ -32,8 +32,9 @@ export default function Home() {
       const data = await resp.json();
       if (!resp.ok) throw new Error(data.error || "Failed");
       setSummary(data.summary || "");
-    } catch (e: any) {
-      setError(e.message);
+    } catch (e: unknown) {
+      const error = e as Error;
+  setError(error.message);
     } finally {
       setLoading(false);
     }
@@ -52,8 +53,9 @@ export default function Home() {
       const data = await resp.json();
       if (!resp.ok) throw new Error(data.error || "Failed");
       alert("✅ Email sent!");
-    } catch (e: any) {
-      setError(e.message);
+    } catch (e: unknown) {
+      const error = e as Error;
+      setError(error.message);
     } finally {
       setSending(false);
     }

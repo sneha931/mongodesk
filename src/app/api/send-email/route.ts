@@ -27,11 +27,12 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ ok: true, messageId: info.messageId });
-  } catch (err: any) {
-    console.error(err);
+  } catch (err: unknown) {
+    const error = err as Error;
+  console.error(error);
     return NextResponse.json(
-      { error: err?.message || "Failed to send email" },
-      { status: 500 }
-    );
+    { error: error.message || "Failed to send email" },
+    { status: 500 }
+  );
   }
 }
