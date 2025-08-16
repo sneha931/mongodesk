@@ -33,7 +33,8 @@ export default function Home() {
       if (!resp.ok) throw new Error(data.error || "Failed");
       setSummary(data.summary || "");
     } catch (e: unknown) {
-      setError(e.message);
+      const error = e as Error;
+  setError(error.message);
     } finally {
       setLoading(false);
     }
@@ -53,7 +54,8 @@ export default function Home() {
       if (!resp.ok) throw new Error(data.error || "Failed");
       alert("✅ Email sent!");
     } catch (e: unknown) {
-      setError(e.message);
+      const error = e as Error;
+      setError(error.message);
     } finally {
       setSending(false);
     }
